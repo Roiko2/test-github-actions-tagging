@@ -6,12 +6,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - name: building
         run: echo Building bla
         shell: bash
   tag:
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - uses: actions/checkout@v2
       - name: Bump version and push tag
