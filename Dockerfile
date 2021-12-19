@@ -1,3 +1,3 @@
 FROM alpine:latest
 
-RUN echo hello
+RUN echo hello people
