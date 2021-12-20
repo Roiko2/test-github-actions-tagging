@@ -2,19 +2,18 @@ name: Deploy prod with new tag
 on:
   workflow_dispatch:
     inputs:
-      tag:
-        description: 'Tag Name'     
-        required: true
       bump:
         description: 'Bump Type'
         type: choice
         required: true
         options: 
-        - prerelease
-        - prepatch
-        - preminor
-        - premajor
-
+        - patch
+        - minor
+        - major
+      environment:
+        type: environment
+      
+      
 jobs:
   build:
     runs-on: ubuntu-latest
