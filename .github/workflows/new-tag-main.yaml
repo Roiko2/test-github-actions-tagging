@@ -12,20 +12,21 @@ on:
         - major
       environment:
         type: environment
+        required: true
         default: 'Staging'
       
       
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: production
+    environment: ${{ github.event.inputs.environment }}
     steps:
       - name: building
         run: echo Building bla
         shell: bash
   tag:
     runs-on: ubuntu-latest
-    environment: production
+    environment: ${{ github.event.inputs.environment }}
     steps:
       - uses: actions/checkout@v2
       - name: Bump version and push tag
