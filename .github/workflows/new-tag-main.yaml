@@ -22,7 +22,7 @@ jobs:
     environment: ${{ github.event.inputs.environment }}
     steps:
       - name: building
-        run: echo Building bla
+        run: cat Dockerfile
         shell: bash
   tag:
     runs-on: ubuntu-latest
