@@ -12,7 +12,7 @@ on:
         - major
       environment:
         type: environment
-        default: staging
+        default: 'Staging'
       
       
 jobs:
