@@ -1,5 +1,5 @@
 name: Deploy prod with new tag
-on:
+on: 
   workflow_dispatch:
     inputs:
       environment:
