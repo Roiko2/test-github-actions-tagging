@@ -6,7 +6,8 @@ on:
         description: 'Tag Name'     
         required: true
       bump:
-        description: 'Bump Type'     
+        description: 'Bump Type'
+        type: choice
         required: true
         options: 
         - prerelease
