@@ -16,10 +16,10 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
-      - name: get var
+      - id: get-var
         uses: ./.github/workflows/create-env-var
     outputs:
-      DEPLOY_ENV: ${{ DEPLOY_ENV }}
+      DEPLOY_ENV: ${{ steps.get-var.outputs.DEPLOY_ENV }}
   check:
     runs-on: ubuntu-latest
     needs: tagg
