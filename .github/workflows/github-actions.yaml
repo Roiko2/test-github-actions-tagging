@@ -11,19 +11,20 @@ jobs:
       - name: building
         run: echo Building bla
         shell: bash
-  tag:
+  tagg:
     runs-on: ubuntu-latest
-    environment: production
     steps:
-      - uses: actions/checkout@v2
-      - name: Bump version and push tag
-        id: tag_version
-        uses: mathieudutour/github-tag-action@v6.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Create a GitHub release
-        uses: ncipollo/release-action@v1
-        with:
-          tag: ${{ steps.tag_version.outputs.new_tag }}
-          name: Release ${{ steps.tag_version.outputs.new_tag }}
-          body: ${{ steps.tag_version.outputs.changelog }}
+      - name: create DEPLOY_ENV
+        run: echo "DEPLOY_ENV=$(if [[ ${{ github.event_name }} == 'workflow_dispatch' ]]; then echo '${{ github.event.inputs.env }}'; else echo 'staging'; fi)" >> $GITHUB_ENV
+      - id: export-env-var
+        run: echo "::set-output name=DEPLOY_ENV::$DEPLOY_ENV"
+      - name: print deploy env
+        run: echo $DEPLOY_ENV
+    outputs:
+      DEPLOY_ENV: ${{ steps.export-env-var.outputs.DEPLOY_ENV }}
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print deploy env
+        run: echo "deploy ${{needs.tagg.outputs.DEPLOY_ENV}}"
+
