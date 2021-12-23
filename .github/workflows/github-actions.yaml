@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: get var
-        uses: ./create-env-var
+        uses: ./github/workflows/create-env-var
   check:
     runs-on: ubuntu-latest
     needs: tagg
