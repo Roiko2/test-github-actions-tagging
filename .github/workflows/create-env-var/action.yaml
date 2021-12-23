@@ -5,7 +5,8 @@ runs:
   steps:
     - run: echo "DEPLOY_ENV=$(if [[ ${{ github.event_name }} == 'workflow_dispatch' ]]; then echo '${{ github.event.inputs.env }}'; else echo 'staging'; fi)" >> $GITHUB_ENV
       shell: bash
-    - run: echo "::set-output name=DEPLOY_ENV::$DEPLOY_ENV"
+    - id: export-env-var
+      run: echo "::set-output name=DEPLOY_ENV::$DEPLOY_ENV"
       shell: bash
     - run: echo $DEPLOY_ENV
       shell: bash
