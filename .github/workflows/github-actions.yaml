@@ -3,6 +3,15 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      env:
+        type: choice
+        required: true
+        options:
+        - staging
+        - prod
+        default: staging
 jobs:
   build:
     runs-on: ubuntu-latest
