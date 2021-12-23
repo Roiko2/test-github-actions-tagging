@@ -1,5 +1,9 @@
 name: "create env var"
 description: "export env var composite action"
+outputs:
+  DEPLOY_ENV:
+    description: "Deploy Env"
+    value: ${{ steps.export-env-var.outputs.DEPLOY_ENV}}
 runs:
   using: "composite"
   steps:
@@ -10,5 +14,3 @@ runs:
       shell: bash
     - run: echo $DEPLOY_ENV
       shell: bash
-outputs:
-  DEPLOY_ENV: ${{ steps.export-env-var.outputs.DEPLOY_ENV }}
