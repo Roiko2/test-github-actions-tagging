@@ -24,6 +24,7 @@ jobs:
       DEPLOY_ENV: ${{ steps.export-env-var.outputs.DEPLOY_ENV }}
   check:
     runs-on: ubuntu-latest
+    needs: tagg
     steps:
       - name: print deploy env
         run: echo "deploy ${{needs.tagg.outputs.DEPLOY_ENV}}"
