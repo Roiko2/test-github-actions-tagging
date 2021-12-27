@@ -37,7 +37,7 @@ jobs:
         run: echo "deploy ${{needs.tagg.outputs.DEPLOY_ENV}}"
       - name: Create tag
         # If an existing tag hasn't been chosen - create a new one (only when running manual)
-        if: ${{ !startsWith(github.ref, 'refs/tags/') && github.event_name == 'workflow_dispatch' }}
+        if: ${{ !startsWith(github.ref, 'refs/tags/') }}
         id: tag_version
         uses: mathieudutour/github-tag-action@v6.0
         with:
