@@ -12,6 +12,14 @@ on:
         - staging
         - prod
         default: staging
+      bump:
+        type: choice
+        required: false
+        options:
+        - patch
+        - minor
+        - major
+        default: patch
 jobs:
   build:
     runs-on: ubuntu-latest
