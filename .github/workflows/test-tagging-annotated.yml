@@ -1,21 +1,12 @@
 on:
   workflow_dispatch:
-    inputs:
-      bump:
-        description: 'Bump Type (choose value only if you did not choose an existing tag)'
-        type: choice
-        options: 
-        - patch
-        - minor
-        - major
     branches:
       - master
 
 jobs:
   test-job:
     runs-on:
-     - self-hosted
-     - granulate-ci-cd
+     - ubuntu:latest
     steps:
       - name: Create tag if not chosen
         # If an existing tag hasn't been chosen - create a new one (only when running manual)
