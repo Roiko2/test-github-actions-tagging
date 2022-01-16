@@ -17,4 +17,5 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           tag_prefix: "bla-test-v"
           default_bump: "minor"
+          create_annotated_tag: true
           # Next line is important so tagging will work with bumps correctly
