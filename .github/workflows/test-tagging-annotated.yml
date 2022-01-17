@@ -15,7 +15,7 @@ jobs:
         uses: mathieudutour/github-tag-action@v6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          tag_prefix: "bla-test-v"
+          tag_prefix: "gcenter/staging-v"
           default_bump: "minor"
           create_annotated_tag: true
           # Next line is important so tagging will work with bumps correctly
