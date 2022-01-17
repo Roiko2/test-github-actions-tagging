@@ -20,7 +20,7 @@ jobs:
     runs-on:
      - ubuntu-latest
     env:
-      DEPLOY_ENV: ${${{ needs.bla.outputs.deploy-env }}##*/}
+      DEPLOY_ENV: ${{ needs.bla.outputs.deploy-env }}
     steps:
     - name: print deploy env
-      run: echo "bla $DEPLOY_ENV"
+      run: echo d $DEPLOY_ENV
