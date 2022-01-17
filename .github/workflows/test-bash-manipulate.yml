@@ -16,6 +16,7 @@ jobs:
     - id: step1
       run: echo "::set-output name=deploy-env::release/gcenter/staging-v0.1.0"
   deploy:
+    needs: bla
     runs-on:
      - ubuntu-latest
     env:
