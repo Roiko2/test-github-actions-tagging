@@ -1,0 +1,12 @@
+name: test bash var
+
+jobs:
+  deploy:
+    environment: "${{needs.get-envs.outputs.DEPLOY_ENV}}-cd"
+    runs-on:
+     - self-hosted
+     - granulate-ci-cd
+    env:
+      DEPLOY_ENV: ${{ needs.get-envs.outputs.DEPLOY_ENV }}
+    steps:
+      
