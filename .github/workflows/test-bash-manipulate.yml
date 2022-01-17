@@ -26,4 +26,4 @@ jobs:
     - uses: actions/github-script@v5
       id: set-result
       with:
-        script: ${DEPLOY_ENV##*/}
+        script: ${{ DEPLOY_ENV##*/ }}
