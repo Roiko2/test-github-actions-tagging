@@ -1,12 +1,25 @@
 name: test bash var
 
+on: 
+  push:
+    branches:
+      - master
+    
+    
 jobs:
-  deploy:
-    environment: "${{needs.get-envs.outputs.DEPLOY_ENV}}-cd"
+  bla:
     runs-on:
-     - self-hosted
-     - granulate-ci-cd
-    env:
-      DEPLOY_ENV: ${{ needs.get-envs.outputs.DEPLOY_ENV }}
+     - ubuntu-latest
+    outputs:
+      deploy-env: ${{ steps.step1.outputs.test }}
     steps:
-      
+    - id: step1
+      run: echo "::set-output name=deploy-env::release/gcenter/staging-v0.1.0"
+  deploy:
+    runs-on:
+     - ubuntu-latest
+    env:
+      DEPLOY_ENV: ${{ needs.bla.outputs.deploy-env }}
+    steps:
+    - name: print deploy env
+      run: echo "bla $DEPLOY_ENV"
