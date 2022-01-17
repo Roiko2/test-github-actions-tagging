@@ -11,7 +11,7 @@ jobs:
     runs-on:
      - ubuntu-latest
     outputs:
-      deploy-env: ${{ steps.step1.outputs.test }}
+      deploy-env: ${{ steps.step1.outputs.deploy-env }}
     steps:
     - id: step1
       run: echo "::set-output name=deploy-env::release/gcenter/staging-v0.1.0"
